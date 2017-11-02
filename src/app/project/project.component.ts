@@ -21,4 +21,13 @@ export class ProjectComponent implements OnInit {
     this.projects = this.projectService.getProjects();
   }
 
+  submitForm(title: string, description: string, goal: number) {
+    let newProject: Project = new Project(title, description, goal);
+    this.projectService.addProject(newProject);
+  }
+
+  goToDetailPage(clickedProject) {
+    this.router.navigate(['projects', clickedProject.$key]);
+  }
+
 }
